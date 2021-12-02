@@ -4,10 +4,7 @@ import { Container } from './styles'
 
 export const TransactionsTable = () => {
   useEffect(() => {
-    api
-      .get('transactions')
-
-      .then((response) => console.log(response.data))
+    api.get('transactions').then((response) => console.log(response))
   }, [])
 
   return (
@@ -16,7 +13,7 @@ export const TransactionsTable = () => {
         <thead>
           <tr>
             <th>Título</th>
-            <th>Preço</th>
+            <th>Valor</th>
             <th>Categoria</th>
             <th>Data</th>
           </tr>
