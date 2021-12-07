@@ -2,6 +2,8 @@ import Modal from 'react-modal'
 
 import { FormEvent, useState } from 'react'
 
+import { api } from '../../services/api'
+
 import closeImg from '../../assets/close.svg'
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
@@ -22,7 +24,14 @@ export const NewTransactionModal = (props: NewTransactionModalProps) => {
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault()
 
-    console.log({ title, value, category, type })
+    const data = {
+      title,
+      value,
+      category,
+      type,
+    }
+
+    api.post('/transactions', data)
   }
 
   return (
@@ -73,7 +82,7 @@ export const NewTransactionModal = (props: NewTransactionModalProps) => {
             activeColor="red"
           >
             <img src={outcomeImg} alt="Saída" />
-            <span>Entrada</span>
+            <span>Saída</span>
           </RadioBox>
         </TransactionTypeContainer>
 
